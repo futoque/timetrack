@@ -1,0 +1,6 @@
+lib
+lib64
+bin
+pyvenv.cfg
+alltimes.db
+
