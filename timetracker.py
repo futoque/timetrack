@@ -53,7 +53,7 @@ class TimeTracker(App):
         except sqlite3.OperationalError as e:
             self.log_area.text += (f"Database Connection Error: {e}")
         try:
-            self.log_area.text += update_query
+            #self.log_area.text += update_query
             cursor.execute(update_query)
             conn.commit()
         except sqlite3.Error as e:
@@ -197,11 +197,11 @@ class TimeTracker(App):
                         self.watchingtotal = r[2]
                     case "Programming":
                         self.programmingtotal = r[2]
-                updatestring = "Game " + str(datetime.timedelta(seconds=self.gametotal)) + "\nLooking " + str(datetime.timedelta(seconds=self.lookingtotal)) + "\nReading " + str(datetime.timedelta(seconds=self.readingtotal)) + "\nCISSP " + str(datetime.timedelta(seconds=self.cissptotal)) + "\nWatching " + str(datetime.timedelta(seconds=self.watchingtotal)) + "\nProgramming " + str(datetime.timedelta(seconds=self.programmingtotal))
-                self.total_area.text = updatestring
         except sqlite3.Error as e:
             self.log_area.text += (f"Query error: {e}")
         conn.close()
+        updatestring = "Game " + str(datetime.timedelta(seconds=self.gametotal)) + "\nLooking " + str(datetime.timedelta(seconds=self.lookingtotal)) + "\nReading " + str(datetime.timedelta(seconds=self.readingtotal)) + "\nCISSP " + str(datetime.timedelta(seconds=self.cissptotal)) + "\nWatching " + str(datetime.timedelta(seconds=self.watchingtotal)) + "\nProgramming " + str(datetime.timedelta(seconds=self.programmingtotal))
+        self.total_area.text = updatestring
 
 app = TimeTracker()
 app.run()
